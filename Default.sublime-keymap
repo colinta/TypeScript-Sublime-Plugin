@@ -1,0 +1,77 @@
+[
+    {
+        "keys": [ "f10" ],
+        "command": "typescript_go_to_definition",
+        "context": [
+            { "key": "selector", "operator": "equal", "operand": "source.ts, source.tsx, source.js, source.jsx" }
+        ]
+    },
+    {
+        "keys": [ "ctrl+alt+r"],
+        "command": "typescript_nav_to",
+        "context": [
+            { "key": "selector", "operator": "equal", "operand": "source.ts, source.tsx, source.js, source.jsx" }
+        ]
+    },
+    {
+        "keys": ["("],
+        "command": "typescript_signature_popup",
+        "context": [
+            { "key": "selector", "operator": "equal", "operand": "source.ts, source.tsx, source.js, source.jsx" },
+            { "key": "paren_pressed"}
+        ]
+    },
+    {
+        "keys": ["alt+down"],
+        "command": "typescript_signature_popup",
+        "args": {"move": "next"},
+        "context": [
+            { "key": "selector", "operator": "equal", "operand": "source.ts, source.tsx, source.js, source.jsx" },
+            { "key": "is_popup_visible"}
+        ]
+    },
+    {
+        "keys": ["alt+up"],
+        "command": "typescript_signature_popup",
+        "args": {"move": "prev"},
+        "context": [
+            { "key": "selector", "operator": "equal", "operand": "source.ts, source.tsx, source.js, source.jsx" },
+            { "key": "is_popup_visible"}
+        ]
+    },    // In case when auto match is enabled, only format if not within {}
+    {
+        "keys": [ "alt+/"],
+        "command": "typescript_signature_popup",
+        "context": [
+            { "key": "selector", "operator": "equal", "operand": "source.ts, source.tsx, source.js, source.jsx" },
+            { "key": "tooltip_supported", "operator": "equal", "operand": true}
+
+        ]
+    },
+    {
+        "keys": [ "enter" ],
+        "command": "typescript_go_to_ref",
+        "context": [
+            { "key": "selector", "operator": "equal", "operand": "text.find-refs" }
+        ]
+    },
+    {
+        "keys": [ "enter" ],
+        "command": "typescript_go_to_error",
+        "context": [
+            { "key": "selector", "operator": "equal", "operand": "text.error-list" }
+        ]
+    },
+    {
+        "keys": [ "enter" ],
+        "command": "typescript_auto_indent_on_enter_between_curly_brackets",
+        "context": [
+            { "key": "setting.typescript_auto_indent", "operator": "equal", "operand": true },
+            { "key": "auto_complete_visible", "operator": "equal", "operand": false },
+            { "key": "selection_empty", "operator": "equal", "operand": true },
+            { "key": "preceding_text", "operator": "regex_contains", "operand": "\\{$" },
+            { "key": "following_text", "operator": "regex_contains", "operand": "^\\}" },
+            { "key": "selector", "operator": "equal", "operand": "source.ts, source.tsx, source.js, source.jsx" }
+        ]
+    }
+]
